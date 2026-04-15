@@ -123,7 +123,7 @@ class _CustomOverlayState extends State<CustomOverlay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: overlay(),
+      body: SafeArea(child: overlay()),
     );
   }
 }
