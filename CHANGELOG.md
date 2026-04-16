@@ -1,3 +1,9 @@
+## 2.0.8
+
+* Improved `BubbleActivity` to handle edge-to-edge content and window insets for better Android 11+ compatibility.
+* Added `SafeArea` to the example overlay widget.
+* Upgraded Android Gradle plugin to 8.2.1 and Gradle wrapper to 8.11.1 in the example app.
+
 ## 2.0.7
 
 * Fixed a bug in windows layout params

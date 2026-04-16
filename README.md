@@ -32,6 +32,8 @@ Uses &#x27;draw on top&#x27; permission and displays it as a overlay window
 With SystemWindowPrefMode.OVERLAY, system alert windows uses 'overlay functionality' wherever it's supported. In that mode, it will show as bubbles if the 'display over other apps' is not supported.
 With SystemWindowPrefMode.DEFAULT/SystemWindowPrefMode.BUBBLE, User has to allow 'All conversations can bubble' in the notification settings of the app. Uses Android Bubble APIs to show the overlay window inside a notification bubble.
 
+Edge-to-edge content and window insets are handled automatically inside the bubble container — wrap your overlay widget with `SafeArea` to avoid content being obscured by system bars.
+
 #### Android GO (API 29)
 
 User has to manually enable bubbles from the developer options. Uses Android Bubble APIs to show the overlay window inside a notification bubble.
