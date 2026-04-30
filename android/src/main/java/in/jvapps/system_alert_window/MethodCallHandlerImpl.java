@@ -122,7 +122,11 @@ public class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler, P
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             i.putExtra(INTENT_EXTRA_IS_UPDATE_WINDOW, false);
-                            mContext.startService(i);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                mContext.startForegroundService(i);
+                            } else {
+                                mContext.startService(i);
+                            }
                             result.success(true);
                         } else {
                             Toast.makeText(mContext, "Please give draw over other apps permission", Toast.LENGTH_LONG).show();
@@ -159,7 +163,11 @@ public class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler, P
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             i.putExtra(INTENT_EXTRA_IS_UPDATE_WINDOW, true);
-                            mContext.startService(i);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                mContext.startForegroundService(i);
+                            } else {
+                                mContext.startService(i);
+                            }
                             result.success(true);
                         } else {
                             Toast.makeText(mContext, "Please give draw over other apps permission", Toast.LENGTH_LONG).show();
@@ -179,8 +187,11 @@ public class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler, P
                         } else {
                             final Intent i = new Intent(mContext, WindowServiceNew.class);
                             i.putExtra(INTENT_EXTRA_IS_CLOSE_WINDOW, true);
-                            //WindowService.dequeueWork(mContext, i);
-                            mContext.startService(i);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                mContext.startForegroundService(i);
+                            } else {
+                                mContext.startService(i);
+                            }
                         }
                         result.success(true);
                     } else {
