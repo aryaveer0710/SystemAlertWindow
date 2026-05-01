@@ -77,10 +77,17 @@ public class WindowServiceNew extends Service implements View.OnTouchListener {
                 .setSmallIcon(R.drawable.ic_desktop_windows_black_24dp)
                 .setContentIntent(pendingIntent)
                 .build();
-        if (Build.VERSION.SDK_INT >= 34) {
-            startForeground(NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
-        } else {
-            startForeground(NOTIFICATION_ID, notification);
+        try {
+            if (Build.VERSION.SDK_INT >= 34) {
+                startForeground(NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
+            } else {
+                startForeground(NOTIFICATION_ID, notification);
+            }
+        } catch (Exception e) {
+            // Android 12+ throws ForegroundServiceStartNotAllowedException when the app is in
+            // the background and not exempt from background-start restrictions.
+            LogUtils.getInstance().e(TAG, "startForeground failed, stopping service: " + e.getMessage());
+            stopSelf();
         }
     }
 
