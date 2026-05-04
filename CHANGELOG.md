@@ -1,3 +1,8 @@
+## 2.0.9
+
+* Switched to `startForegroundService` on Android 8.0+ (API 26+) when starting `WindowServiceNew` to comply with background start restrictions.
+* Added error handling around `startForeground` to gracefully handle `ForegroundServiceStartNotAllowedException` on Android 12+ when the app is in the background.
+
 ## 2.0.8
 
 * Improved `BubbleActivity` to handle edge-to-edge content and window insets for better Android 11+ compatibility.
