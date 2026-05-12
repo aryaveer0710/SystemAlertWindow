@@ -1,3 +1,7 @@
+## 2.0.10
+
+* Minor maintenance update.
+
 ## 2.0.9
 
 * Switched to `startForegroundService` on Android 8.0+ (API 26+) when starting `WindowServiceNew` to comply with background start restrictions.
